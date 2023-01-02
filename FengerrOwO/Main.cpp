@@ -408,6 +408,10 @@ int main() {
         ImGui::InputFloat3("Position", &block_pos[0]);
 
         if (ImGui::Button("Insert")) {
+			float temp = block_pos.x;
+			block_pos.x = block_pos.z;
+			block_pos.z = temp;
+			
             if (board[(int)block_pos.x][(int)block_pos.y][(int)block_pos.z] == 0) {
                 set_block_position(glm::vec3((int)block_pos.x, (int)block_pos.y, (int)block_pos.z), glm::vec3(0.0f, 0.0f, 0.0f));
                 if (block_position.size() != 0) {
@@ -439,6 +443,7 @@ int main() {
                     MessageBox(NULL, "This position is already occupied!", "Wrong move!", MB_OK);
                 }
             }
+            block_pos = glm::vec3(0.0f, 0.0f, 0.0f);
         }
 
         ImGui::End();

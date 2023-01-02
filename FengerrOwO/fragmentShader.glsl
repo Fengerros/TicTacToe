@@ -30,7 +30,7 @@ void main(){
     vec3 normal = normalize(v_normal);
 
     float diffuse = max(dot(normal, light_direction), 0.0);
-
+     
     float specular = pow(max(dot(normal, half_direction), 0.0), 32.0);
 
     color = vec4((ambient_color + diffuse * diffuse_color + specular * specular_color) * fragmentColor, 1.0);
